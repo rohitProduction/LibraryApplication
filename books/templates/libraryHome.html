@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>Library Home</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <h1>Library Home</h1>
+        <a href="{%url 'bookList' %}" class="btn btn-lg btn-secondary">Book List</a>
+        <a href="{%url 'logOut' %}" class="btn btn-lg btn-secondary">Log Out</a>
+    </body>
+</html>

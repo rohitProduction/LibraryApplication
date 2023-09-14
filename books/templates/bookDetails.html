@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{{book.title}}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <a href="{%url 'bookList' %}" class="btn btn-lg btn-secondary">Go Back</a>
+        <div class="input-box">
+        <h1>{{book.title}}</h1>
+        <h3>Description: {{book.description}}</h3>
+        <img src="/media/{{ book.image }}" alt="Image N/A">
+        {% if borrowers %}
+        <ul class="bookDetails">
+            {% for borrower in borrowers %}
+            <li>
+                <h3>Due Date: {{borrower.expectedDue}}</h3>
+                <h3>Borrower Information:</h3>
+                <h3>Username: {{borrower.user.username}}</h3>
+                <h3>Name: {{borrower.user.first_name}} {{borrower.user.last_name}}</h3>
+                <h3>Email: {{borrower.user.email}}</h3>
+            </li>
+            {% endfor %}
+            
+        </ul>
+        {% else %}
+            <h3>Expected due date if borrowed: {{expectedDueDate}}</h3>
+            <a href='{%url 'borrow' book.title%}' class="btn btn-sm btn-secondary">Borrow</a>
+        {% endif %}
+    </div>
+    </body>
+</html>

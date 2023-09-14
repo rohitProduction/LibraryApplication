@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+    <div class="wrapper">
+        <h2>Sign Up</h2>
+          <form action="{% url 'sign_up' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="input-box">
+                {{ field }}
+              </div>
+            {% endfor %}
+            <div class="input-box button">
+              <input type="submit" value="Register Now" class="btn btn-lg btn-secondary">
+            </div>
+            <div class="text">
+              <h3>Already have an account? <a href="{% url 'log_in'%} " class="btn btn-lg btn-secondary">Login now</a></h3>
+              <a href="{%url 'homepage' %}" class="btn btn-lg btn-secondary">Home page</a>
+          </div>
+        </form>
+      </div>
+</html>
